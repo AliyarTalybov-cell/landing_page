@@ -73,6 +73,19 @@ export const siteConfig = {
     secondaryCta: { label: "Посмотреть тарифы", href: "#pricing" },
   },
 
+  featuredWork: {
+    eyebrow: "Пример работы",
+    title: "English Platform",
+    description:
+      "Портал для преподавателей и учеников по английскому языку: современный инструмент для обучения с уровня A0 до A2 и выше.",
+    aiDescription:
+      "ИИ-учитель для индивидуальной практики, обратной связи и самостоятельного обучения.",
+    note: "Сайт разработан на современной архитектуре и легко масштабируется под потребности проекта.",
+    href: "https://english-platform-orcin.vercel.app/",
+    overviewVideo: "/videos/english-platform-overview.mp4",
+    aiVideo: "/videos/english-platform-ai.mp4",
+  },
+
   logoCloud: {
     tagline: "Временные логотипы клиентов",
     companies: ["Компания 1", "Компания 2", "Компания 3", "Компания 4", "Компания 5"],
