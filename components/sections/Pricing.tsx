@@ -100,8 +100,21 @@ function TierCard({
 
 export function Pricing() {
   const [selectedTier, setSelectedTier] = useState<PricingTier | null>(null);
+  const [modalVisible, setModalVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const { pricing } = siteConfig;
+
+  const openModal = (tier: PricingTier) => {
+    setSelectedTier(tier);
+    setSubmitted(false);
+    setModalVisible(false);
+    window.setTimeout(() => setModalVisible(true), 20);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    window.setTimeout(() => setSelectedTier(null), 220);
+  };
 
   return (
     <section id="pricing" className="px-6 py-20 sm:py-28 lg:px-10">
@@ -129,17 +142,15 @@ export function Pricing() {
                   role="button"
                   tabIndex={0}
                   onClick={() => {
-                    setSelectedTier(tier);
-                    setSubmitted(false);
+                    openModal(tier);
                   }}
                   onKeyDown={(event) => {
                     if (event.key === "Enter" || event.key === " ") {
-                      setSelectedTier(tier);
-                      setSubmitted(false);
+                      openModal(tier);
                     }
                   }}
                 >
-                  <TierCard tier={tier} annual={false} onSelect={() => setSelectedTier(tier)} />
+                  <TierCard tier={tier} annual={false} onSelect={() => openModal(tier)} />
                 </div>
               </div>
             ))}
@@ -149,23 +160,23 @@ export function Pricing() {
 
       {selectedTier && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-gray-950/60 px-6 py-10 backdrop-blur-sm"
+          className={`fixed inset-0 z-50 flex items-center justify-center px-6 py-10 backdrop-blur-sm transition-all duration-200 ease-out ${modalVisible ? "bg-gray-950/60 opacity-100" : "bg-gray-950/0 opacity-0"}`}
           role="dialog"
           aria-modal="true"
           aria-labelledby="demo-form-title"
-          onClick={() => setSelectedTier(null)}
+          onClick={closeModal}
         >
           <div
-            className="relative w-full max-w-lg rounded-3xl bg-white p-7 shadow-2xl dark:bg-gray-900"
+            className={`relative w-full max-w-lg rounded-3xl bg-white p-7 shadow-2xl transition-all duration-200 ease-out dark:bg-gray-900 ${modalVisible ? "translate-y-0 scale-100 opacity-100" : "translate-y-3 scale-95 opacity-0"}`}
             onClick={(event) => event.stopPropagation()}
           >
             <button
               type="button"
               className="absolute right-5 top-5 text-2xl leading-none text-gray-400 hover:text-gray-950 dark:hover:text-white"
               aria-label="Закрыть форму"
-              onClick={() => setSelectedTier(null)}
+              onClick={closeModal}
             >
-              ×
+              <span className="block transition-transform duration-200 hover:rotate-90">×</span>
             </button>
             {submitted ? (
               <div className="py-10 text-center">
@@ -174,7 +185,7 @@ export function Pricing() {
                 <button
                   type="button"
                   className="mt-7 rounded-full bg-gray-950 px-5 py-3 text-sm font-semibold text-white dark:bg-white dark:text-gray-950"
-                  onClick={() => setSelectedTier(null)}
+                  onClick={closeModal}
                 >
                   Закрыть
                 </button>

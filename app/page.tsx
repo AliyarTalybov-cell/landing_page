@@ -1,5 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { LogoCloud } from "@/components/sections/LogoCloud";
+import { FeaturedWork } from "@/components/sections/FeaturedWork";
 import { Features } from "@/components/sections/Features";
 import { Screenshot } from "@/components/sections/Screenshot";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <FeaturedWork />
       <LogoCloud />
       <Features />
       <Screenshot />

@@ -6,15 +6,14 @@ import { Navbar } from "@/components/sections/Navbar";
  * viewport edges, holding both the nav and the hero content.
  */
 export function Hero() {
-  const { hero, featuredWork } = siteConfig;
+  const { hero } = siteConfig;
 
   return (
     <div className="mx-2 mt-2 lg:mx-4">
       <div className="gradient-mesh relative overflow-hidden rounded-[2.5rem] ring-1 ring-black/5 dark:ring-white/10">
         <Navbar />
 
-        <div className="relative grid gap-8 px-6 pb-14 pt-10 sm:px-10 sm:pb-18 sm:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.58fr)] lg:items-center lg:gap-10 lg:px-14 lg:pb-20 lg:pt-16">
-          <div>
+        <div className="relative px-6 pb-14 pt-10 sm:px-10 sm:pb-18 sm:pt-14 lg:px-14 lg:pb-20 lg:pt-16">
           {/* Announcement pill */}
           <a
             href={hero.announcement.href}
@@ -48,40 +47,6 @@ export function Hero() {
               {hero.secondaryCta.label}
             </a>
           </div>
-          </div>
-
-          <a
-            href={featuredWork.href}
-            target="_blank"
-            rel="noreferrer"
-            className="group w-full max-w-md justify-self-end rounded-3xl bg-white/70 p-2.5 shadow-2xl ring-1 ring-black/10 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white dark:bg-white/10 dark:ring-white/10 dark:hover:bg-white/15"
-          >
-            <div className="overflow-hidden rounded-2xl bg-gray-950">
-              <video
-                className="aspect-[4/3] w-full object-cover"
-                src={featuredWork.overviewVideo}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                aria-label="Превью проекта English Platform"
-              />
-            </div>
-            <div className="px-2 pb-2 pt-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-indigo-600 dark:text-indigo-400">{featuredWork.eyebrow}</p>
-              <h2 className="mt-1 text-2xl font-bold tracking-tight text-gray-950 dark:text-white">{featuredWork.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">{featuredWork.description}</p>
-              <div className="mt-3 grid grid-cols-[92px_1fr] items-center gap-3">
-                <div className="overflow-hidden rounded-xl bg-gray-950/10 dark:bg-white/10">
-                  <video className="aspect-video w-full object-cover" src={featuredWork.aiVideo} muted loop playsInline preload="metadata" aria-label="Пример ИИ-учителя" />
-                </div>
-                <p className="self-center text-xs leading-relaxed text-gray-500 dark:text-gray-400">{featuredWork.aiDescription}</p>
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-gray-500 dark:text-gray-400">{featuredWork.note}</p>
-              <span className="mt-3 inline-flex text-sm font-semibold text-gray-950 group-hover:underline dark:text-white">Открыть проект →</span>
-            </div>
-          </a>
         </div>
       </div>
     </div>
